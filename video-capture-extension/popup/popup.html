@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Capture Helper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-row">
+        <h1>&#127909; Video Capture</h1>
+        <span class="badge">v3</span>
+      </div>
+    </header>
+
+    <!-- Timer Card -->
+    <div class="timer-card" id="timer-card">
+      <div class="timer-display" id="timer-display">00:00</div>
+      <div class="timer-status">
+        <span class="status-dot idle" id="status-dot"></span>
+        <span id="status-text">就绪</span>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="settings-row">
+      <div class="setting">
+        <label>画质</label>
+        <select id="sel-quality">
+          <option value="2000000">流畅</option>
+          <option value="5000000">标清</option>
+          <option value="8000000" selected>高清</option>
+          <option value="15000000">超清</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label>格式</label>
+        <select id="sel-format">
+          <option value="webm" selected>WebM</option>
+          <option value="mp4">MP4</option>
+          <option value="avi">AVI</option>
+          <option value="mov">MOV</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Control: Idle -->
+    <div class="control-row" id="control-row">
+      <button class="ctrl-btn start" id="btn-start">
+        <span class="ctrl-icon">&#9679;</span>
+        <span>开始录制</span>
+      </button>
+    </div>
+
+    <!-- Control: Recording -->
+    <div class="control-row hidden" id="control-recording">
+      <button class="ctrl-btn pause" id="btn-pause">
+        <span class="ctrl-icon">&#10074;&#10074;</span>
+        <span>暂停</span>
+      </button>
+      <button class="ctrl-btn stop" id="btn-stop">
+        <span class="ctrl-icon">&#9632;</span>
+        <span>停止</span>
+      </button>
+    </div>
+
+    <!-- Control: Paused -->
+    <div class="control-row hidden" id="control-paused">
+      <button class="ctrl-btn resume" id="btn-resume">
+        <span class="ctrl-icon">&#9654;</span>
+        <span>继续</span>
+      </button>
+      <button class="ctrl-btn stop" id="btn-stop-pause">
+        <span class="ctrl-icon">&#9632;</span>
+        <span>停止</span>
+      </button>
+    </div>
+
+    <!-- Shortcut -->
+    <div class="shortcut-hint">
+      快捷键 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> 开始/停止
+    </div>
+
+    <!-- Video Detection -->
+    <div class="detect-section">
+      <div class="detect-header">
+        <span>页面视频</span>
+        <button class="mini-btn" id="btn-detect" title="刷新">&#8635;</button>
+      </div>
+      <div id="video-list" class="video-tags">检测中...</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <span id="footer-tip">AVI/MOV 不支持时自动回退 WebM，可用播放器重命名扩展名</span>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
